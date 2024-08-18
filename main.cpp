@@ -149,4 +149,4 @@ int main(int argc, char *argv[]) {
     return app.exec();
 }
 
-#include "main.moc" // Не забудьте добавить этот include в конец вашего файла
+#include "main.moc" 
