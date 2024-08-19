@@ -19,18 +19,18 @@ public:
         this->a = a;
         this->b = b;
         this->c = c;
-        update(); // Перерисовать виджет
+        update(); 
     }
 
 protected:
     void paintEvent(QPaintEvent *event) override {
-        QWidget::paintEvent(event); // Вызов базового класса
+        QWidget::paintEvent(event); 
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
 
         // Отрисовка сетки
-        painter.setPen(Qt::lightGray); // Устанавливаем цвет линий сетки
-        int gridSpacing = 20; // Расстояние между клетками
+        painter.setPen(Qt::lightGray); 
+        int gridSpacing = 20; 
 
         // Вертикальные линии
         for (int x = 0; x < width(); x += gridSpacing) {
@@ -64,17 +64,17 @@ protected:
         // Рисуем график
         painter.setPen(Qt::red);
 
-        // Увеличим количество проложенных точек для создания плавного графика
+        
         QPolygonF graphPoints;
         double previousY = 0.0;
 
         for (int x = -width() / 2; x < width() / 2; ++x) {
-            double xScaled = x / 20.0; // Масштабируем x
-            double y = a * std::pow(xScaled, 2) + b * xScaled + c; // Вычисляем y
+            double xScaled = x / 20.0; 
+            double y = a * std::pow(xScaled, 2) + b * xScaled + c; 
 
-            graphPoints.append(QPointF(width() / 2 + x, height() / 2 - (y * 20))); // Добавляем точку
+            graphPoints.append(QPointF(width() / 2 + x, height() / 2 - (y * 20))); 
 
-            // Если это не первая точка, соединяем её с предыдущей
+
             if (graphPoints.size() > 1) {
                 painter.drawLine(graphPoints[graphPoints.size() - 2], graphPoints[graphPoints.size() - 1]);
             }
